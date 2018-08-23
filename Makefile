@@ -1,17 +1,5 @@
 #!/usr/bin/make
-
-build-dev: bin/python
-	ln -fs dev.cfg buildout.cfg
-	bin/pip install -I -r requirements.txt
-	bin/buildout
-
-build-prod: bin/python
-	ln -fs prod.cfg buildout.cfg
-	bin/pip install -I -r requirements.txt
-	bin/buildout
-
-bin/python:
-	virtualenv-2.7 .
-
-run: bin/instance
-	bin/instance fg
+# UID := $(shell id -u)
+# docker build args to add after tests: --no-cache --force-rm
+docker-build-cache:
+	docker build --pull --no-cache --build-arg repo=buildout.rescuearea -t docker-staging.imio.be/rescuearea/cache:latest .
