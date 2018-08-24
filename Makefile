@@ -15,3 +15,6 @@ bin/python:
 
 run: bin/instance
 	bin/instance fg
+
+docker-image:
+	docker build --pull -t docker-staging.imio.be/rescuearea/mutual:latest .
