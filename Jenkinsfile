@@ -21,7 +21,7 @@ pipeline {
             steps {
                 pushImageToRegistry (
                     env.BUILD_ID,
-                    'library/mutual'
+                    'rescuearea/mutual'
                 )
             }
         }
@@ -33,7 +33,7 @@ pipeline {
                 }
             }
             steps {
-                sh "mco shell run 'docker pull docker-staging.imio.be/library/mutual:$BUILD_ID' -I /^staging.imio.be/"
+                sh "mco shell run 'docker pull docker-staging.imio.be/rescuearea/mutual:$BUILD_ID' -I /^staging.imio.be/"
                 sh "mco shell run 'systemctl restart rescuearea.service' -I /^staging.imio.be/"
             }
         }
@@ -45,13 +45,13 @@ pipeline {
                 }
             }
             steps {
-                sh "docker pull docker-staging.imio.be/library/mutual:$BUILD_ID"
-                sh "docker tag docker-staging.imio.be/library/mutual:$BUILD_ID docker-prod.imio.be/library/mutual:$BUILD_ID"
-                sh "docker tag docker-staging.imio.be/library/mutual:$BUILD_ID docker-prod.imio.be/library/mutual:latest"
-                sh "docker push docker-prod.imio.be/library/mutual"
-                sh "docker rmi docker-staging.imio.be/library/mutual:$BUILD_ID"
-                sh "docker rmi docker-prod.imio.be/library/mutual:latest"
-                sh "docker rmi docker-prod.imio.be/library/mutual:$BUILD_ID"
+                sh "docker pull docker-staging.imio.be/rescuearea/mutual:$BUILD_ID"
+                sh "docker tag docker-staging.imio.be/rescuearea/mutual:$BUILD_ID docker-prod.imio.be/rescuearea/mutual:$BUILD_ID"
+                sh "docker tag docker-staging.imio.be/rescuearea/mutual:$BUILD_ID docker-prod.imio.be/rescuearea/mutual:latest"
+                sh "docker push docker-prod.imio.be/rescuearea/mutual"
+                sh "docker rmi docker-staging.imio.be/rescuearea/mutual:$BUILD_ID"
+                sh "docker rmi docker-prod.imio.be/rescuearea/mutual:latest"
+                sh "docker rmi docker-prod.imio.be/rescuearea/mutual:$BUILD_ID"
             }
         }
     }
