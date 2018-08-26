@@ -1,4 +1,4 @@
-@Library('jenkins-pipeline-scripts') _
+@Rescuearea('jenkins-pipeline-scripts') _
 
 pipeline {
     agent none
