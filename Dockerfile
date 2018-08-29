@@ -6,7 +6,6 @@ ENV PATH="/home/imio/.local/bin:${PATH}" \
     PROJECT_ID=rescuearea \
     HOME=/home/imio
 RUN mkdir /home/imio/plone
-COPY docker-entrypoint.sh /
 COPY Makefile *.cfg *.txt /home/imio/plone/
 RUN buildDeps="libpq-dev wget git python-virtualenv gcc libc6-dev libpcre3-dev libssl-dev libxml2-dev libxslt1-dev libbz2-dev libffi-dev libjpeg62-dev libopenjp2-7-dev zlib1g-dev python-dev" \
   && runDeps="poppler-utils wv rsync lynx netcat libxml2 libxslt1.1 libjpeg62 libtiff5 libopenjp2-7 gosu" \
@@ -16,13 +15,12 @@ RUN buildDeps="libpq-dev wget git python-virtualenv gcc libc6-dev libpcre3-dev l
   && pip install -I -r requirements.txt \
   && ln -fs prod.cfg buildout.cfg \
   && buildout \
-  && chown imio:imio -R /home/imio/plone/ && chown imio:imio /docker-entrypoint.sh && chmod +x /docker-entrypoint.sh \
+  && chown imio:imio -R /home/imio/plone/ \
   && apt-get remove -y $buildDeps \
   && apt-get install -y $runDeps \
   && apt-get autoremove -y \
   && apt-get clean
 WORKDIR /home/imio/plone
-EXPOSE 8080
+EXPOSE 8081
 HEALTHCHECK --start-period=15s --timeout=5s --interval=1m \
   CMD curl --fail http://127.0.0.1:8080/ || exit 1
-ENTRYPOINT ["/docker-entrypoint.sh"]
