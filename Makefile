@@ -18,3 +18,7 @@ run: bin/instance
 
 docker-image:
 	docker build --pull -t docker-staging.imio.be/rescuearea/mutual:latest .
+
+rsync:
+	rsync -P imio@staging.lan.imio.be:/srv/instances/zhc/filestorage/Data.fs var/filestorage/Data.fs
+	rsync -r --info=progress2 imio@staging.lan.imio.be:/srv/instances/zhc/blobstorage/ var/blobstorage/
