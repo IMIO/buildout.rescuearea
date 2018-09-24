@@ -14,7 +14,7 @@ RUN utily="python-pip" \
   && git clone https://github.com/IMIO/${repo}.git /home/imio/plone \
   && cd /home/imio/plone \
   && pip install -r requirements.txt \
-  && buildout -t 10 -c prod.cfg \
+  && buildout -t 25 -c prod.cfg \
   && cd /home/imio/ \
   && apt-get purge -y --auto-remove $buildDeps \
   && rm -rf /var/lib/apt/lists/* \
