@@ -6,7 +6,7 @@ COPY default.cfg /home/imio/.buildout/default.cfg
 ENV PIP=9.0.3 \
   HOME=/home/imio
 RUN utily="python-pip" \
-  && buildDeps="libpq-dev wget git python-virtualenv gcc libc6-dev libpcre3-dev libssl-dev libxml2-dev libxslt1-dev libbz2-dev libffi-dev libjpeg62-dev libopenjp2-7-dev zlib1g-dev python-dev libldap2-dev" \
+  && buildDeps="libpq-dev wget git python-virtualenv gcc libc6-dev libpcre3-dev libssl-dev libxml2-dev libxslt1-dev libbz2-dev libffi-dev libjpeg62-dev libopenjp2-7-dev zlib1g-dev python-dev libldap2-dev libsasl2-dev" \
   && apt-get update \
   && apt-get install -y --no-install-recommends $buildDeps \
   && apt-get install -y --no-install-recommends $utily \
