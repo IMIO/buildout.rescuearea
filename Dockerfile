@@ -7,8 +7,8 @@ ENV PATH="/home/imio/.local/bin:${PATH}" \
     HOME=/home/imio
 RUN mkdir /home/imio/imio-website
 COPY Makefile *.cfg *.txt /home/imio/imio-website/
-RUN buildDeps="libpq-dev wget git python-virtualenv gcc libc6-dev libpcre3-dev libssl-dev libxml2-dev libxslt1-dev libbz2-dev libffi-dev libjpeg62-dev libopenjp2-7-dev zlib1g-dev python-dev" \
-  && runDeps="poppler-utils wv rsync lynx netcat libxml2 libxslt1.1 libjpeg62 libtiff5 libopenjp2-7" \
+RUN buildDeps="libpq-dev wget git python-virtualenv gcc libc6-dev libpcre3-dev libssl-dev libxml2-dev libxslt1-dev libbz2-dev libffi-dev libjpeg62-dev libopenjp2-7-dev zlib1g-dev python-dev libldap2-devi libsasl2-dev" \
+  && runDeps="poppler-utils wv rsync lynx netcat libxml2 libxslt1.1 libjpeg62 libtiff5 libopenjp2-7 libldap-2.4-2 libsasl2-2 libssl1.0.0" \
   && apt-get update \
   && apt-get install -y --no-install-recommends $buildDeps \
   && cd /home/imio/imio-website \
