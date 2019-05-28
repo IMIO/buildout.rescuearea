@@ -17,7 +17,7 @@ run: bin/instance
 	bin/instance fg
 
 docker-image:
-	docker build --pull -t docker-staging.imio.be/rescuearea/mutual:latest .
+	docker build --pull -t rescuearea/mutual:latest .
 
 rsync:
 	rsync -P imio@staging.lan.imio.be:/srv/instances/zhc/filestorage/Data.fs var/filestorage/Data.fs
