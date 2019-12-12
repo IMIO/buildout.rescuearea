@@ -16,6 +16,7 @@ RUN buildDeps="libpq-dev wget git python-virtualenv gcc libc6-dev libpcre3-dev l
   && ln -fs prod.cfg buildout.cfg \
   && buildout -t 50 \
   && chown imio:imio -R /home/imio/imio-website/ \
+  && chown imio:imio -R /home/imio/.buildout \
   && apt-get remove -y $buildDeps \
   && apt-get install -y $runDeps \
   && apt-get autoremove -y \
