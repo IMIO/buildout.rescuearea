@@ -26,7 +26,7 @@ RUN apk add --update --no-cache --virtual .build-deps \
   && pip install pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL
 WORKDIR /plone
 RUN chown imio:imio -R /plone && mkdir /data && chown imio:imio -R /data
-COPY --chown=imio eggs /plone/eggs/
+#COPY --chown=imio eggs /plone/eggs/
 COPY --chown=imio *.cfg /plone/
 RUN rm -f .installed.cfg .mr.developer.cfg
 RUN su -c "buildout -t 45 -c prod.cfg" -s /bin/sh imio
