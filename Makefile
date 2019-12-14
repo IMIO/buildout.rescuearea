@@ -22,7 +22,7 @@ rsync:
 	rsync -r --info=progress2 imio@staging.lan.imio.be:/srv/instances/zhc/blobstorage/ var/blobstorage/
 
 .PHONY: docker-image
-docker-image:
+docker-image: eggs
 	docker build --no-cache --pull -t rescuearea/mutual:latest .
 
 eggs:  ## Copy eggs from docker image to speed up docker build
