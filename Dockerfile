@@ -1,8 +1,7 @@
 FROM docker-staging.imio.be/base:alpine as builder
 ENV PIP=9.0.3 \
-  ZC_BUILDOUT=2.13.2 \
-  SETUPTOOLS=41.0.1 \
-  WHEEL=0.31.1 \
+  ZC_BUILDOUT=2.11.3 \
+  SETUPTOOLS=38.7.0 \
   PLONE_MAJOR=5.0 \
   PLONE_VERSION=5.0.8
 
@@ -23,7 +22,7 @@ RUN apk add --update --no-cache --virtual .build-deps \
   pcre-dev \
   wget \
   zlib-dev \
-  && pip install pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL
+  && pip install pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT
 WORKDIR /plone
 RUN chown imio:imio -R /plone && mkdir /data && chown imio:imio -R /data
 #COPY --chown=imio eggs /plone/eggs/
@@ -35,9 +34,8 @@ RUN su -c "buildout -t 45 -c prod.cfg" -s /bin/sh imio
 FROM docker-staging.imio.be/base:alpine
 
 ENV PIP=9.0.3 \
-  ZC_BUILDOUT=2.13.2 \
-  SETUPTOOLS=41.0.1 \
-  WHEEL=0.31.1 \
+  ZC_BUILDOUT=2.11.3 \
+  SETUPTOOLS=38.7.0 \
   PLONE_MAJOR=5.0 \
   PLONE_VERSION=5.0.8 \
   TZ=Europe/Brussel
