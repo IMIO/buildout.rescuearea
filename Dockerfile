@@ -19,7 +19,7 @@ RUN apk add --update --no-cache --virtual .build-deps \
   libxml2-dev \
   libxslt-dev \
   openssl-dev \
-  openldap-devel \
+  openldap-dev \
   pcre-dev \
   wget \
   zlib-dev \
